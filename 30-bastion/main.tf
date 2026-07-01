@@ -27,3 +27,17 @@ resource "aws_instance" "bastion" {
     local.common_tags
   )
 }
+
+resource "aws_iam_role_policy_attachment" "bastion" {
+  role       = aws_iam_role.bastion.name
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+}
+
+resource "aws_iam_instance_profile" "bastion" {
+  name = "${var.project}-${var.environment}-bastion"
+  role = aws_iam_role.bastion.name
+}
+
+
+
+
