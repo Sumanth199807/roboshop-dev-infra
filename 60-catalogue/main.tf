@@ -89,7 +89,7 @@ resource "aws_launch_template" "catalogue" {
     )
   }
 
-  # Launch template resource tags
+  
   tags = merge(
       {
           Name = "${local.common_name}-catalogue-${var.app_version}-${aws_instance.catalogue.id}"
@@ -157,7 +157,7 @@ resource "aws_autoscaling_group" "catalogue" {
     }
   }
 
-  # with in 15min autoscaling should be successful to launch instances
+  
   timeouts {
     delete = "15m"
   }
@@ -199,7 +199,7 @@ resource "terraform_data" "catalogue_delete" {
   ]
   depends_on = [aws_autoscaling_policy.catalogue]
 
-  # executes where terraform is running
+
   provisioner "local-exec" {
     command = "aws ec2 terminate-instances --instance-ids ${aws_instance.catalogue.id}"
   }
