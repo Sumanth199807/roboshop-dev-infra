@@ -16,7 +16,7 @@ resource "aws_lb" "frontend_alb" {
   
 }
 
-resource "aws_lb_listner" "https" {
+resource "aws_lb_listener" "https" {
     load_balancer_arn = aws_lb.frontend_alb.arn
      port              = "443"
      protocol         ="HTTPS"
@@ -36,7 +36,7 @@ resource "aws_lb_listner" "https" {
 
 resource "aws_route53_record" "www" {
   zone_id = var.zone_id
-  name    = "${var.project}-${var.environment}.daws90s.shop" # *.daws90s.shop
+  name    = "${var.project}-${var.environment}.daws90s.space" # *.daws90s.shop
   type    = "A"
 
   alias {

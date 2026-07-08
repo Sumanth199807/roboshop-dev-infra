@@ -3,7 +3,7 @@ variable "project" {
 }
 
 variable "environment" {
-  default = "env"
+  default = "dev"
 }
 
 variable "domain_name" {
